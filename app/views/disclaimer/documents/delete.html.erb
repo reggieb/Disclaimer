@@ -1,2 +1,8 @@
-<h1>Documents#delete</h1>
-<p>Find me in app/views/disclaimer/documents/delete.html.erb</p>
+<h1>Delete Document</h1>
+<h2><%= @document.title %></h2>
+<p>Are you sure you want to delete this document?</p>
+
+<%= form_for(@document, :url => document_path(@document), :method => :delete) do |form| %>
+<%= form.submit('Yes') %>
+<%= link_to('Cancel', url_for(:back)) %>
+<% end %>

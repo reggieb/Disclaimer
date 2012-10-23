@@ -2,11 +2,11 @@ require_dependency "disclaimer/application_controller"
 
 module Disclaimer
   class DocumentsController < ApplicationController
-    before_filter :get_document, :only => [:show, :delete, :edit, :update]
+    before_filter :get_document, :only => [:show, :delete, :destroy, :edit, :update]
     
     def index
       @document = Document.first
-      render :show
+      render :show if @document
     end
   
     def show
@@ -31,6 +31,11 @@ module Disclaimer
     end
   
     def delete
+    end
+    
+    def destroy
+      @document.destroy
+      redirect_to :controller => 'disclaimer/documents', :action => 'index'
     end
   
     private
