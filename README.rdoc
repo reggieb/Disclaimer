@@ -1,0 +1,3 @@
+= Disclaimer
+
+A tool for adding disclaimers to applications.
