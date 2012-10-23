@@ -1,2 +1,25 @@
-<h1>Documents#new</h1>
-<p>Find me in app/views/disclaimer/documents/new.html.erb</p>
+<h1>Disclaimer document</h1>
+
+<%= form_for(@document) do |form| %>
+
+<p>
+  <%= form.label(:title) %><br/>
+  <%= form.text_field(:title) %>
+</p>
+
+<p>
+  <%= form.label(:header) %><br/>
+  <%= form.text_area(:header, :rows => 4) %>
+</p>
+
+<p>
+  <%= form.label(:footer) %><br/>
+  <%= form.text_area(:footer, :rows => 4) %>
+</p>
+
+<p>
+  <%= form.submit %>
+</p>
+
+<% end %>
+

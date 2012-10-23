@@ -6,6 +6,7 @@ module Disclaimer
     
     def index
       @document = Document.first
+      render :show
     end
   
     def show
