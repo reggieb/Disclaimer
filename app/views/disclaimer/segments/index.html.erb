@@ -1,6 +1,10 @@
 <h1>Segments</h1>
 <p><%= link_to('New Segment', new_segment_path) %></p>
 
+<% if @segments.empty? %>
+<p>There are currently no disclaimer segments</p>
+<% else %>
+
 <table>
   <tr>
     <th>Name</th>
@@ -8,7 +12,7 @@
     <th>Documents</th>
     <th colspan="3">Action</th>
   </tr>
-<% @segments.each do |segment| %>
+<%   @segments.each do |segment| %>
   <tr>
     <td><%= segment.name %></td>
     <td><%= segment.title %></td>
@@ -17,5 +21,6 @@
     <td><%= link_to('Edit', edit_segment_path(segment)) %></td>
     <td><%= link_to('Delete', delete_segment_path(segment)) %></td>
   </tr>
-<% end %>
+<%   end %>
 </table>
+<%  end %>

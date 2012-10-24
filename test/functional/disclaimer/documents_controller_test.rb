@@ -10,7 +10,7 @@ module Disclaimer
     def test_index
       get :index
       assert_response :success
-      assert_equal(@document, assigns('document'))
+      assert_equal(Document.all, assigns('documents'))
     end
   
     def test_show

@@ -5,8 +5,7 @@ module Disclaimer
     before_filter :get_document, :only => [:show, :delete, :destroy, :edit, :update]
     
     def index
-      @document = Document.first
-      render :show if @document
+      @documents = Document.all
     end
   
     def show

@@ -3,6 +3,11 @@
 <%= form_for(@document) do |form| %>
 
 <p>
+  <%= form.label(:name) %><br/>
+  <%= form.text_field(:name) %>
+</p>
+
+<p>
   <%= form.label(:title) %><br/>
   <%= form.text_field(:title) %>
 </p>
