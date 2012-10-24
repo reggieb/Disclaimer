@@ -2,6 +2,8 @@ module Disclaimer
   class Document < ActiveRecord::Base
     attr_accessible :footer, :header, :title, :name
     
+    before_save :underscore_name
+    
     has_many :segment_holders, :uniq => true
     has_many :segments, :through => :segment_holders, :uniq => true
     
@@ -9,6 +11,10 @@ module Disclaimer
     
     def segment_holder_for(segment)
       segment_holders.where(:segment_id => segment.id).first
+    end
+    
+    def to_param
+      name
     end
     
     private
@@ -37,6 +43,10 @@ The segment is not associated with the document, and therefore document.#{method
 #{inspect} 
 #{segment.inspect}
 EOF
+    end
+    
+    def underscore_name
+      self.name = self.name.downcase.gsub(/\s+/, '_')
     end
     
   end

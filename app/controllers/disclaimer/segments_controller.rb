@@ -39,7 +39,7 @@ module Disclaimer
   
     private
     def get_segment
-      @segment = Segment.find(params[:id])
+      @segment = Segment.find_by_name(params[:id])
     end
   end
 end

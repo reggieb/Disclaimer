@@ -39,7 +39,7 @@ module Disclaimer
   
     private
     def get_document
-      @document = Document.find(params[:id])
+      @document = Document.find_by_name(params[:id])
     end
     
   end

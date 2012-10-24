@@ -14,7 +14,7 @@ module Disclaimer
     end
   
     def test_show
-      get :show, :id => @segment.id
+      get :show, :id => @segment.name
       assert_response :success
       assert_equal(@segment, assigns('segment'))
     end
@@ -40,7 +40,7 @@ module Disclaimer
     end
     
     def test_edit
-      get :edit, :id => @segment.id
+      get :edit, :id => @segment.name
       assert_equal(@segment, assigns('segment'))
       assert_response :success
     end    
@@ -50,7 +50,7 @@ module Disclaimer
       assert_no_difference 'Segment.count' do
         post(
           :update, 
-          :id => @segment.id,
+          :id => @segment.name,
           :segment => {
             :title => title
           }        
@@ -61,14 +61,14 @@ module Disclaimer
     end
   
     def test_delete
-      get :delete, :id => @segment.id
+      get :delete, :id => @segment.name
       assert_response :success
       assert_equal(@segment, assigns('segment'))
     end
     
     def test_destroy
       assert_difference 'Segment.count', -1 do
-        delete :destroy, :id => @segment.id, :use_route => :disclaimer 
+        delete :destroy, :id => @segment.name, :use_route => :disclaimer 
       end
       assert_response :redirect
     end

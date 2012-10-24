@@ -14,7 +14,7 @@ module Disclaimer
     end
   
     def test_show
-      get :show, :id => @document.id
+      get :show, :id => @document.name
       assert_response :success
       assert_equal(@document, assigns('document'))
     end
@@ -40,7 +40,7 @@ module Disclaimer
     end
     
     def test_edit
-      get :edit, :id => @document.id
+      get :edit, :id => @document.name
       assert_equal(@document, assigns('document'))
       assert_response :success
     end    
@@ -50,7 +50,7 @@ module Disclaimer
       assert_no_difference 'Document.count' do
         post(
           :update, 
-          :id => @document.id,
+          :id => @document.name,
           :document => {
             :title => title
           }        
@@ -61,14 +61,14 @@ module Disclaimer
     end
   
     def test_delete
-      get :delete, :id => @document.id
+      get :delete, :id => @document.name
       assert_response :success
       assert_equal(@document, assigns('document'))
     end
     
     def test_destroy
       assert_difference 'Document.count', -1 do
-        delete :destroy, :id => @document.id, :use_route => :disclaimer 
+        delete :destroy, :id => @document.name, :use_route => :disclaimer 
       end
       assert_response :redirect
     end

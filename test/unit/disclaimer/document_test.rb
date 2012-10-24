@@ -14,6 +14,11 @@ module Disclaimer
     def test_segment_holder_for
       segment_holder = @segment.segment_holders.first
       assert_equal(segment_holder, @document.segment_holder_for(@segment))
-    end    
+    end 
+    
+    def test_name_under_scored_on_save
+      @document.update_attribute(:name, "This is a Name")
+      assert_equal('this_is_a_name', @document.name)
+    end
   end
 end

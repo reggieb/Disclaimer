@@ -35,6 +35,11 @@ module Disclaimer
       end
     end
     
+    def test_name_under_scored_on_save
+      @segment.update_attribute(:name, "This is a Name")
+      assert_equal('this_is_a_name', @segment.name)
+    end
+    
     def new_segment
       Segment.new(:title => 'not in document')
     end
