@@ -20,5 +20,11 @@ module Disclaimer
       @document.update_attribute(:name, "This is a Name")
       assert_equal('this_is_a_name', @document.name)
     end
+    
+    def test_title_if_empty
+      @document.title = nil
+      @document.name = "this_is_a_name"
+      assert_equal("This is a name", @document.title)
+    end
   end
 end

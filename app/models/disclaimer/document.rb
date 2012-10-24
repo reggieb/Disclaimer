@@ -17,6 +17,10 @@ module Disclaimer
       name
     end
     
+    def title
+      super || name.humanize
+    end
+    
     private
     def method_missing(method, *args)  
       segment = args.first     

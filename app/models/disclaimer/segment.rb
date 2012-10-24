@@ -13,6 +13,10 @@ module Disclaimer
       name
     end  
     
+    def title
+      super || name.humanize
+    end
+    
     private
     def underscore_name
       self.name = self.name.downcase.gsub(/\s+/, '_')
