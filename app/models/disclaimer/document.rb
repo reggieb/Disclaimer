@@ -1,9 +1,11 @@
 module Disclaimer
   class Document < ActiveRecord::Base
-    attr_accessible :footer, :header, :title
+    attr_accessible :footer, :header, :title, :name
     
     has_many :segment_holders, :uniq => true
     has_many :segments, :through => :segment_holders, :uniq => true
+    
+    validates :name, :presence => true
     
     def segment_holder_for(segment)
       segment_holders.where(:segment_id => segment.id).first

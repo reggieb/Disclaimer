@@ -30,7 +30,8 @@ module Disclaimer
         post(
           :create, 
           :document => {
-            :title => title
+            :title => title,
+            :name => 'new document'
           }
         )
       end

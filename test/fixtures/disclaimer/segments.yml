@@ -2,10 +2,12 @@
 
 one:
   id: 1
+  name: one
   title: MyString
   body: MyText
 
 two:
   id: 2
+  name: two
   title: MyString
   body: MyText

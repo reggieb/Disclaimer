@@ -10,7 +10,7 @@ module Disclaimer
     def test_index
       get :index
       assert_response :success
-      assert_equal(@segment, assigns('segment'))
+      assert_equal(Segment.all, assigns('segments'))
     end
   
     def test_show
@@ -30,7 +30,8 @@ module Disclaimer
         post(
           :create, 
           :segment => {
-            :title => title
+            :title => title,
+            :name => 'new segment'
           }
         )
       end
