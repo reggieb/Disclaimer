@@ -11,12 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023125748) do
+ActiveRecord::Schema.define(:version => 20121024080818) do
 
   create_table "disclaimer_documents", :force => true do |t|
     t.string   "title"
     t.text     "header"
     t.text     "footer"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "disclaimer_documents_segments", :id => false, :force => true do |t|
+    t.integer "document_id"
+    t.integer "segment_id"
+  end
+
+  create_table "disclaimer_segment_holders", :force => true do |t|
+    t.integer  "document_id"
+    t.integer  "segment_id"
+    t.integer  "position"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "disclaimer_segments", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

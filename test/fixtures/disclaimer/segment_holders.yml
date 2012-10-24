@@ -1,0 +1,9 @@
+one:
+  document_id: 1
+  segment_id: 1
+  position: 1
+
+two:
+  document_id: 1
+  segment_id: 2
+  position: 2
