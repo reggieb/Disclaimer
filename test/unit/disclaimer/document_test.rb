@@ -22,9 +22,15 @@ module Disclaimer
     end
     
     def test_title_if_empty
-      @document.title = nil
+      @document.title = ""
       @document.name = "this_is_a_name"
       assert_equal("This is a name", @document.title)
     end
+    
+    def test_title_if_nil
+      @document.title = nil
+      @document.name = "this_is_a_name"
+      assert_equal("This is a name", @document.title)
+    end    
   end
 end

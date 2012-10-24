@@ -18,7 +18,7 @@ module Disclaimer
     end
     
     def title
-      super || name.humanize
+      ((!super || super.empty?) && name.present?) ? name.humanize : super
     end
     
     private

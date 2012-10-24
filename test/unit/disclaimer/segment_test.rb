@@ -41,10 +41,16 @@ module Disclaimer
     end
     
     def test_title_if_empty
-      @document.title = nil
-      @document.name = "this_is_a_name"
-      assert_equal("This is a name", @document.title)
+      @segment.title = ""
+      @segment.name = "this_is_a_name"
+      assert_equal("This is a name", @segment.title)
     end
+    
+      def test_title_if_nil
+      @segment.title = nil
+      @segment.name = "this_is_a_name"
+      assert_equal("This is a name", @segment.title)
+    end  
     
     def new_segment
       Segment.new(:name => 'not in document')
