@@ -1,0 +1,8 @@
+<h1>Delete Segment</h1>
+<h2><%= @segment.title %></h2>
+<p>Are you sure you want to delete this segment?</p>
+
+<%= form_for(@segment, :url => segment_path(@segment), :method => :delete) do |form| %>
+<%= form.submit('Yes') %>
+<%= link_to('Cancel', url_for(:back)) %>
+<% end %>
