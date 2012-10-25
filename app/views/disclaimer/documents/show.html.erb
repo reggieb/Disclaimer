@@ -13,4 +13,7 @@
 </div>
 <footer>
   <%= @document.footer %>
+  <%= form_for(@document, :url => accept_document_path(@document), :method => 'post') do |form| %>
+    <%= form.submit('Accept') %>
+  <% end %>
 </footer>

@@ -59,6 +59,52 @@ module Disclaimer
       assert_response :redirect
       assert_equal(title, @document.reload.title)
     end
+    
+    def test_update_with_no_segments
+      assert_equal(2, @document.segments.length)
+      post(
+        :update, 
+        :id => @document.name,
+        :document => {
+          :segments => nil
+        }        
+      )
+      assert_equal(0, @document.reload.segments.length)
+    end
+    
+    def test_adding_one_segment
+      segment = Segment.last
+      post(
+        :update, 
+        :id => @document.name,
+        :document => {
+          :segments => {
+            segment.id => 'yes'
+          }
+        }        
+      )
+      assert_equal([segment], @document.reload.segments)
+    end
+    
+    def test_adding_two_segments
+      test_update_with_no_segments
+      post(
+        :update, 
+        :id => @document.name,
+        :document => {
+          :segments => {
+            Segment.first.id => 'yes',
+            Segment.last.id => 'yes'
+          }
+        }        
+      )
+      assert_equal(2, @document.reload.segments.length)
+    end
+    
+    def test_adding_one_segment_after_two_segments_removed_the_extra_segment
+      test_adding_two_segments
+      test_adding_one_segment
+    end
   
     def test_delete
       get :delete, :id => @document.name
@@ -71,6 +117,12 @@ module Disclaimer
         delete :destroy, :id => @document.name, :use_route => :disclaimer 
       end
       assert_response :redirect
+    end
+    
+    def test_accept
+      post :accept, :id => @document.name
+      assert_response :redirect
+      assert_equal({@document.name.to_sym => 'accepted'}, session[:disclaimer])
     end
   
   end

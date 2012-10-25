@@ -2,7 +2,7 @@ require_dependency "disclaimer/application_controller"
 
 module Disclaimer
   class DocumentsController < ApplicationController
-    before_filter :get_document, :only => [:show, :delete, :destroy, :edit, :update]
+    before_filter :get_document, :only => [:show, :delete, :destroy, :edit, :update, :accept]
     
     def index
       @documents = Document.all
@@ -36,6 +36,12 @@ module Disclaimer
     def destroy
       @document.destroy
       redirect_to :controller => 'disclaimer/documents', :action => 'index'
+    end
+    
+    def accept
+      session[:disclaimer] ||= {}
+      session[:disclaimer][@document.name.to_sym] = 'accepted'
+      redirect_to :root
     end
   
     private
