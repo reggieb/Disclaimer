@@ -25,6 +25,7 @@ module Disclaimer
     end
     
     def update
+      params[:document][:segments] = replace_with_segments(params[:document][:segments])    
       @document.update_attributes(params[:document])
       redirect_to document_path(@document)      
     end
@@ -40,6 +41,14 @@ module Disclaimer
     private
     def get_document
       @document = Document.find_by_name(params[:id])
+    end
+    
+    def replace_with_segments(hash_with_ids_as_keys = nil)
+      if hash_with_ids_as_keys
+        hash_with_ids_as_keys.keys.collect{|id| Segment.find(id)}
+      else
+        []
+      end
     end
     
   end

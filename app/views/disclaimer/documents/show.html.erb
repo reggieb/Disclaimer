@@ -2,7 +2,15 @@
   <h1><%= @document.title %></h1>
   <%= @document.header %>
 </header>
+<%= javascript_tag('$(function() {$( "#articles" ).accordion({heightStyle: "content"});});') %>
+<div id="articles">
+<% @document.segments.each do |segment| %>
 
+    <h3><%= segment.title %></h3>
+    <div><%= segment.body %></div>
+
+<% end %>
+</div>
 <footer>
   <%= @document.footer %>
 </footer>

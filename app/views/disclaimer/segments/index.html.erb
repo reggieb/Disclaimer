@@ -16,7 +16,7 @@
   <tr>
     <td><%= segment.name %></td>
     <td><%= segment.title %></td>
-    <td><%= segment.documents.collect{|d| d.title}.join(', ') %>
+    <td><%= segment.documents.collect{|d| d.name}.join(', ') %>
     <td><%= link_to('Show', segment_path(segment)) %></td>
     <td><%= link_to('Edit', edit_segment_path(segment)) %></td>
     <td><%= link_to('Delete', delete_segment_path(segment)) %></td>

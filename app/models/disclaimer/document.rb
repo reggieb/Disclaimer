@@ -1,6 +1,6 @@
 module Disclaimer
   class Document < ActiveRecord::Base
-    attr_accessible :footer, :header, :title, :name
+    attr_accessible :footer, :header, :title, :name, :segments
     
     before_save :underscore_name
     

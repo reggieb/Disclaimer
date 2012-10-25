@@ -17,6 +17,24 @@
   <%= form.text_area(:header, :rows => 4) %>
 </p>
 
+<p>Segments</p>
+
+<ul>
+<% Disclaimer::Segment.all.each do |segment| %>
+  <li>
+   
+    <%= check_box_tag(
+          :segment_ids,  
+          nil,  
+          @document.segments.include?(segment),  
+          :name => "document[segments][#{segment.id}]" 
+        )
+    %>
+    
+    <%= segment.name %>
+  </li>
+<% end %>
+</ul>
 <p>
   <%= form.label(:footer) %><br/>
   <%= form.text_area(:footer, :rows => 4) %>
