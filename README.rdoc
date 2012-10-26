@@ -6,6 +6,8 @@ A tool for adding disclaimers to applications.
 
 === Gemfile  TODO - add config option
 
+=== Routing
+
 Update config/routes.rb by adding:
 
     mount Disclaimer::Engine => "/disclaimer"
@@ -23,7 +25,7 @@ everyone who visits your products controller has accepted this disclaimer. Modif
 
     class ProductsController < ApplicationController
 
-      disclaimer(:our_company_disclaimer)
+      disclaimer :our_company_disclaimer
 
 
       .....(rest of controller)....
@@ -38,10 +40,21 @@ If they accept the disclaimer, they will be redirected back to the page they wer
 
 The acceptance is stored in session and therefore will remembered for as long as the browser is open.
 
+=== Options
+
+A before_filter is used to provide this functionality, and you can pass before_filter options through from
+the disclaimer decloration. Therefore, to only display a disclaimer for the index and show actions in a controller
+use:
+
+     disclaimer :our_company_disclaimer, :only => [:index, :show]
+
 == Documents and Segments
 
 Documents can be created at /disclaimer/documents, and Segments as /disclaimer/segments. Documents can contain
 many segments, and segments can be shared across many documents (that is, you can share common sections of a disclaimer
 across many documents). This behaviour can be overwritten in the host application.
 
+The disclaimer engine does not restrict access to these controllers. Such restriction should be configured in
+the host application. However, everyone needs access to the disclaimer documents#show action so that they can read
+and accept the disclaimer.
 

@@ -2,8 +2,8 @@
 module ActionController
   class Base < Metal
 
-    def self.disclaimer(document_name)
-      before_filter  {|c| c.redirect_to_disclaimer(document_name)}
+    def self.disclaimer(document_name, options = {})
+      before_filter(options) {|c| c.redirect_to_disclaimer(document_name)}
     end
 
     def redirect_to_disclaimer(document_name)
