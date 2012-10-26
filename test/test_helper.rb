@@ -6,6 +6,9 @@ require "rails/test_help"
 
 Rails.backtrace_cleaner.remove_silencers!
 
+require 'minitest/reporters'
+MiniTest::Reporters.use!
+
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 

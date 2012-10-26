@@ -39,9 +39,9 @@ module Disclaimer
     end
     
     def accept
-      session[:disclaimer] ||= {}
-      session[:disclaimer][@document.name.to_sym] = 'accepted'
-      redirect_to :root
+      return_path = disclaimer_return_path
+      store_disclaimer_acceptance
+      redirect_to return_path || :root
     end
   
     private
@@ -55,6 +55,19 @@ module Disclaimer
       else
         []
       end
+    end
+
+    def store_disclaimer_acceptance
+      session[:disclaimer] ||= {}
+      session[:disclaimer][@document.name.to_sym] = :accepted
+    end
+
+    def disclaimer_return_path
+      if session[:disclaimer]
+        return_path = session[:disclaimer][@document.name.to_sym]
+        return return_path if return_path != :accepted
+      end
+
     end
     
   end

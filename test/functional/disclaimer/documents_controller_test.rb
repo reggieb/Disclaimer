@@ -122,7 +122,7 @@ module Disclaimer
     def test_accept
       post :accept, :id => @document.name
       assert_response :redirect
-      assert_equal({@document.name.to_sym => 'accepted'}, session[:disclaimer])
+      assert_equal({@document.name.to_sym => :accepted}, session[:disclaimer])
     end
   
   end
