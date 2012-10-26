@@ -59,13 +59,13 @@ module Disclaimer
 
     def store_disclaimer_acceptance
       session[:disclaimer] ||= {}
-      session[:disclaimer][@document.name.to_sym] = :accepted
+      session[:disclaimer][@document.name.to_sym] = ACCEPTED
     end
 
     def disclaimer_return_path
       if session[:disclaimer]
         return_path = session[:disclaimer][@document.name.to_sym]
-        return return_path if return_path != :accepted
+        return return_path if return_path != ACCEPTED
       end
 
     end

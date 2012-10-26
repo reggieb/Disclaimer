@@ -16,7 +16,7 @@ module ActionController
     end
 
     def disclaimer_has_been_accepted
-      session[:disclaimer] && session[:disclaimer][@disclaimer_document_name] == :accepted
+      session[:disclaimer] && session[:disclaimer][@disclaimer_document_name] == Disclaimer::ACCEPTED
     end
 
     def store_disclaimer_return_location
