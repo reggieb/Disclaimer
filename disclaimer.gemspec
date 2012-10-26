@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Disclaimer::VERSION
   s.authors     = ["Rob Nichols"]
   s.email       = ["rob@undervale.co.uk"]
-  s.homepage    = "http://undervale.co.uk"
-  s.summary     = "TODO: Summary of Disclaimer."
-  s.description = "TODO: Description of Disclaimer."
+  s.homepage    = "https://github.com/reggieb/Disclaimer"
+  s.summary     = "Add disclaimers to Rails applications."
+  s.description = "Redirects users to a disclaimer document until the user accepts the disclaimer."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]

@@ -4,7 +4,19 @@ A tool for adding disclaimers to applications.
 
 == Installation
 
-=== Gemfile  TODO - add config option
+To use this engine:
+
+=== Gemfile
+
+Add the following to your Gemfile
+
+    gem 'disclaimer'
+
+=== Migrations
+
+To add disclaimer's migrations to the host apps' migrations, run this command:
+
+    rake disclaimer:install:migrations
 
 === Routing
 
@@ -38,12 +50,12 @@ Then when a user navigates to the products controller, they will be redirected t
 
 If they accept the disclaimer, they will be redirected back to the page they were originally aiming for.
 
-The acceptance is stored in session and therefore will remembered for as long as the browser is open.
+The acceptance is stored in session and therefore will be remembered for as long as the browser is open.
 
 === Options
 
 A before_filter is used to provide this functionality, and you can pass before_filter options through from
-the disclaimer decloration. Therefore, to only display a disclaimer for the index and show actions in a controller
+the disclaimer declaration. Therefore, to only display a disclaimer for the index and show actions in a controller
 use:
 
      disclaimer :our_company_disclaimer, :only => [:index, :show]
@@ -58,3 +70,11 @@ The disclaimer engine does not restrict access to these controllers. Such restri
 the host application. However, everyone needs access to the disclaimer documents#show action so that they can read
 and accept the disclaimer.
 
+== Into production
+
+I would recommend using seeding to generate your initial disclaimer documents, or you could create a custom rake
+task to do this for you. Alternatively use the option used in test/dummy:
+
+    disclaimer Disclaimer::Document.first.name.to_sym
+
+This will display the first disclaimer document in your database.
