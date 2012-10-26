@@ -68,7 +68,7 @@ across many documents). This behaviour can be overwritten in the host applicatio
 
 The disclaimer engine does not restrict access to these controllers. Such restriction should be configured in
 the host application. However, everyone needs access to the disclaimer documents#show action so that they can read
-and accept the disclaimer.
+the disclaimer, and documents#accept so they can accept it.
 
 == Into production
 
