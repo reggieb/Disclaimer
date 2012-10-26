@@ -16,9 +16,9 @@ See test/dummy/config/routes.rb
 
 First create a disclaimer document (see below) and give it a name. (The name is in underscore form: like_this).
 
-Then in your application controller, define the disclaimer you wish to use with *disclaimer(:document_name)*.
+Then in your application controller, define the disclaimer you wish to use with 'disclaimer(:document_name)'.
 
-So for example, you have a disclaimer document with the name our_company_disclaimer and you want to make sure that
+So for example, you have a disclaimer document with the name :our_company_disclaimer and you want to make sure that
 everyone who visits your products controller has accepted this disclaimer. Modify the controller like this:
 
     class ProductsController < ApplicationController
@@ -40,8 +40,8 @@ The acceptance is stored in session and therefore will remembered for as long as
 
 == Documents and Segments
 
-Documents can be created at /disclaimer/documents, and Segments as /disclaimer/segments. Documents are can contain
-many segments, and segments can be shared across many documents (so that you can share common sections of a disclaimer
+Documents can be created at /disclaimer/documents, and Segments as /disclaimer/segments. Documents can contain
+many segments, and segments can be shared across many documents (that is, you can share common sections of a disclaimer
 across many documents). This behaviour can be overwritten in the host application.
 
 
