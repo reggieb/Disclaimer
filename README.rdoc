@@ -26,20 +26,17 @@ Update config/routes.rb by adding:
 
 See test/dummy/config/routes.rb
 
-By default, documents#show (GET) and documents#accept (POST) are the only acceptable disclaimer actions.
-
-If you wish to enable all the CRUD actions available in the documents and segments
-controllers, set Disclaimer.enable_crud! in an initializer. For example, see
-test/dummy/config/initializers/disclaimer.rb
-
 == Usage
 
-First create a disclaimer document (see below) and give it a name. (The name is in underscore form: like_this).
+First create a disclaimer document (see below) and give it a name. (The name is 
+in underscore form: like_this).
 
-Then in your application controller, define the disclaimer you wish to use with 'disclaimer(:document_name)'.
+Then in your application controller, define the disclaimer you wish to use with 
+'disclaimer(:document_name)'.
 
-So for example, you have a disclaimer document with the name :our_company_disclaimer and you want to make sure that
-everyone who visits your products controller has accepted this disclaimer. Modify the controller like this:
+So for example, you have a disclaimer document with the name :our_company_disclaimer 
+and you want to make sure that everyone who visits your products controller has 
+accepted this disclaimer. Modify the controller like this:
 
     class ProductsController < ApplicationController
 
@@ -50,32 +47,51 @@ everyone who visits your products controller has accepted this disclaimer. Modif
 
     end
 
-Then when a user navigates to the products controller, they will be redirected to the disclaimer document at:
+Then when a user navigates to the products controller, they will be redirected 
+to the disclaimer document at:
 
   /disclaimer/documents/our_company_disclaimer
 
-If they accept the disclaimer, they will be redirected back to the page they were originally aiming for.
+If they accept the disclaimer, they will be redirected back to the page they were 
+originally aiming for.
 
-The acceptance is stored in session and therefore will be remembered for as long as the browser is open.
+The acceptance is stored in session and therefore will be remembered for as long 
+as the browser is open.
 
 === Options
 
-A before_filter is used to provide this functionality, and you can pass before_filter options through from
-the disclaimer declaration. Therefore, to only display a disclaimer for the index and show actions in a controller
+A before_filter is used to provide this functionality, and you can pass 
+before_filter options through from the disclaimer declaration. Therefore, to 
+only display a disclaimer for the index and show actions in a controller
 use:
 
      disclaimer :our_company_disclaimer, :only => [:index, :show]
 
 == Documents and Segments
 
-Documents can be created at /disclaimer/documents, and Segments as /disclaimer/segments. Documents can contain
-many segments, and segments can be shared across many documents (that is, you can share common sections of a disclaimer
-across many documents). This behaviour can be overwritten in the host application.
+Each disclaimer consists of a Disclaimer::Document, and this document can have
+many Segments. Segments can be shared across many documents. 
+
+== Controller CRUD actions
+
+By default, documents#show (GET) and documents#accept (POST) are the only acceptable 
+disclaimer actions.
+
+If you wish to enable all the CRUD actions available in the documents and segments
+controllers, set Disclaimer.enable_crud! in an initializer. For example, see
+test/dummy/config/initializers/disclaimer.rb
+
+With CRUD actions enabled documents can be managed at /disclaimer/documents, and 
+Segments at /disclaimer/segments. If you wish to modify the controller behaviour 
+(for example by adding access control), copy disclaimer's app/disclaimer/controllers 
+to the same location in your application, and modify these copies. The versions 
+in your application will take precedence over those in disclaimer.
 
 == Into production
 
-I would recommend using seeding to generate your initial disclaimer documents, or you could create a custom rake
-task to do this for you. Alternatively use the option used in test/dummy:
+I would recommend using seeding to generate your initial disclaimer documents, 
+or you could create a custom rake task to do this for you. Alternatively use 
+the option used in test/dummy:
 
     disclaimer Disclaimer::Document.first.name.to_sym
 
