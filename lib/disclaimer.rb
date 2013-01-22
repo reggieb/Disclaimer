@@ -4,11 +4,11 @@ require 'rails/actionpack/lib/action_controller/base'
 module Disclaimer
   ACCEPTED = :accepted
     
-  def self.show_only
-    @show_only 
+  def self.enable_crud?
+    @enable_crud
   end
   
-  def self.show_only=(bool)
-    @show_only = bool
+  def self.enable_crud!
+    @enable_crud = true
   end
 end

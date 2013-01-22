@@ -1,15 +1,6 @@
 Disclaimer::Engine.routes.draw do
   
-  if Disclaimer.show_only
-  
-   resources :documents, :only => :show do
-      member do
-        post :accept
-      end
-    end
-    
-  else
-    
+  if Disclaimer.enable_crud?
     root :to => "documents#index"
 
     resources :documents do
@@ -24,6 +15,16 @@ Disclaimer::Engine.routes.draw do
         get :delete
       end
     end
+    
+  else
+  
+   resources :documents, :only => :show do
+      member do
+        post :accept
+      end
+    end
+    
+
     
   end
     

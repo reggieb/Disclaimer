@@ -26,13 +26,11 @@ Update config/routes.rb by adding:
 
 See test/dummy/config/routes.rb
 
-If you want to limit access to the disclaimer show and accept, use this
-in your app's config/routes.rb
+By default, documents#show (GET) and documents#accept (POST) are the only acceptable disclaimer actions.
 
-    Disclaimer.show_only = true
-    mount Disclaimer::Engine => "/disclaimer"
-
-When this is set, documents#show (GET) and documents#accept (POST) are the only acceptable disclaimer actions.
+If you wish to enable all the CRUD actions available in the documents and segments
+controllers, set Disclaimer.enable_crud! in an initializer. For example, see
+test/dummy/config/initializers/disclaimer.rb
 
 == Usage
 
