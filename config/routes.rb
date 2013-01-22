@@ -1,18 +1,31 @@
 Disclaimer::Engine.routes.draw do
   
-  root :to => "documents#index"
+  if Disclaimer.show_only
   
-  resources :documents do
-    member do
-      get :delete
-      post :accept
+   resources :documents, :only => :show do
+      member do
+        post :accept
+      end
     end
-  end
-  
-  resources :segments do
-    member do
-      get :delete
+    
+  else
+    
+    root :to => "documents#index"
+
+    resources :documents do
+      member do
+        get :delete
+        post :accept
+      end
     end
+
+    resources :segments do
+      member do
+        get :delete
+      end
+    end
+    
   end
+    
 
 end

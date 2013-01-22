@@ -6,8 +6,6 @@ require "rails/test_help"
 
 Rails.backtrace_cleaner.remove_silencers!
 
-require 'minitest/reporters'
-MiniTest::Reporters.use!
 
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
@@ -28,6 +26,14 @@ class ActionController::TestCase
     parameters ||= Hash.new
     parameters[:use_route] = :disclaimer unless parameters[:use_route]
     super
+  end
+  
+  def actions_and_controllers
+    Disclaimer::Engine.routes.routes.collect{|r| r.defaults}
+  end
+
+  def actions_for_controller(controller = 'disclaimer/documents')
+    actions_and_controllers.select{|p| p[:controller] == controller}.collect{|ac| ac[:action]}
   end
   
 end

@@ -26,6 +26,14 @@ Update config/routes.rb by adding:
 
 See test/dummy/config/routes.rb
 
+If you want to limit access to the disclaimer show and accept, use this
+in your app's config/routes.rb
+
+    Disclaimer.show_only = true
+    mount Disclaimer::Engine => "/disclaimer"
+
+When this is set, documents#show (GET) and documents#accept (POST) are the only acceptable disclaimer actions.
+
 == Usage
 
 First create a disclaimer document (see below) and give it a name. (The name is in underscore form: like_this).
@@ -65,10 +73,6 @@ use:
 Documents can be created at /disclaimer/documents, and Segments as /disclaimer/segments. Documents can contain
 many segments, and segments can be shared across many documents (that is, you can share common sections of a disclaimer
 across many documents). This behaviour can be overwritten in the host application.
-
-The disclaimer engine does not restrict access to these controllers. Such restriction should be configured in
-the host application. However, everyone needs access to the disclaimer documents#show action so that they can read
-the disclaimer, and documents#accept so they can accept it.
 
 == Into production
 

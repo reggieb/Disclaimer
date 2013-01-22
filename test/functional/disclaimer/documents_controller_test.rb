@@ -124,6 +124,6 @@ module Disclaimer
       assert_response :redirect
       assert_equal({@document.name.to_sym => ACCEPTED}, session[:disclaimer])
     end
-  
+    
   end
 end
