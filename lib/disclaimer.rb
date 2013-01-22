@@ -1,5 +1,5 @@
 require "disclaimer/engine"
-require 'rails/actionpack/lib/action_controller/base'
+require File.expand_path('rails/actionpack/lib/action_controller/base', File.dirname(__FILE__))
 
 module Disclaimer
   ACCEPTED = :accepted
