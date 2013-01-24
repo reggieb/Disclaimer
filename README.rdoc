@@ -87,6 +87,17 @@ Segments at /disclaimer/segments. If you wish to modify the controller behaviour
 to the same location in your application, and modify these copies. The versions 
 in your application will take precedence over those in disclaimer.
 
+== Managing views
+
+The default views are simple, and you will probably want to modify them. 
+To do this create disclaimer view files in your host app. These will take 
+precedence over the versions located in the gem. 
+
+To create your own disclaimer page, create a new show file within your host 
+rails app. For example:
+
+  /app/views/disclaimer/documents/show.html.erb
+
 == Into production
 
 I would recommend using seeding to generate your initial disclaimer documents, 

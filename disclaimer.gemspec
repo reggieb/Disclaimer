@@ -17,8 +17,6 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 3.2.8"
-  s.add_dependency "jquery-rails"
-  s.add_dependency 'jquery-ui-rails'
   s.add_dependency "acts_as_list"
 
   s.add_development_dependency "sqlite3"

@@ -2,7 +2,6 @@
   <h1><%= @document.title %></h1>
   <%= @document.header %>
 </header>
-<%= javascript_tag('$(function() {$( "#articles" ).accordion({heightStyle: "content"});});') %>
 <div id="articles">
 <% @document.segments.each do |segment| %>
 

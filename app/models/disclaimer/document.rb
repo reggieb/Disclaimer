@@ -1,11 +1,12 @@
 module Disclaimer
   class Document < ActiveRecord::Base
-    attr_accessible :footer, :header, :title, :name, :segments
+    attr_accessible :footer, :header, :title, :name, :segments, :segment_ids
     
     before_save :underscore_name
     
     has_many :segment_holders, :uniq => true
     has_many :segments, :through => :segment_holders, :uniq => true
+    accepts_nested_attributes_for :segments
     
     validates :name, :presence => true
     
