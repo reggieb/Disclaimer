@@ -26,4 +26,18 @@ class SampleControllerTest < ActionController::TestCase
     assert_response :success
     assert_nil session[:disclaimer], "Session should not be set when disclaimer is bypassed"
   end
+  
+  def test_disclaimer_does_not_cause_error_if_disclaimer_not_found
+    @document.update_attribute(:name, 'something_else')
+    get :index
+    assert_response :success
+    assert_nil session[:disclaimer], "Session should not be set"
+  end
+  
+  def test_disclaimer_works_if_document_generated_after_initial_load
+    name = @document.name
+    test_disclaimer_does_not_cause_error_if_disclaimer_not_found
+    @document.update_attribute(:name, name)
+    test_index_default_redirect
+  end
 end
