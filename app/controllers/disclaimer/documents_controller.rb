@@ -41,7 +41,7 @@ module Disclaimer
     def accept
       return_path = disclaimer_return_path
       store_disclaimer_acceptance
-      redirect_to return_path || :root
+      redirect_to return_path || host_app_root
     end
   
     private
@@ -68,6 +68,10 @@ module Disclaimer
         return return_path if return_path != ACCEPTED
       end
 
+    end
+    
+    def host_app_root
+      '/'
     end
     
   end
