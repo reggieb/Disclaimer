@@ -1,6 +1,8 @@
 class SampleController < ApplicationController
 
-  disclaimer Disclaimer::Document.first.name.to_sym, :only => [:index]
+  disclaimer_name = Disclaimer::Document.first.name if Disclaimer::Document.first
+  
+  disclaimer disclaimer_name, :only => [:index]
 
   def index
   end
