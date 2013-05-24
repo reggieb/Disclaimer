@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    disclaimer (0.0.3)
+    disclaimer (0.0.4)
       acts_as_list
       rails (~> 3.2.8)
 

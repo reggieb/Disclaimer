@@ -11,4 +11,14 @@ module Disclaimer
   def self.enable_crud!
     @enable_crud = true
   end
+  
+  def self.host_app_root_path
+    @host_app_root_path
+  end
+  
+  def self.host_app_root_path=(path)
+    @host_app_root_path = path
+  end
+  
+
 end
