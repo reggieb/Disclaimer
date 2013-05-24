@@ -87,6 +87,18 @@ Segments at /disclaimer/segments. If you wish to modify the controller behaviour
 to the same location in your application, and modify these copies. The versions 
 in your application will take precedence over those in disclaimer.
 
+== Routing
+
+Disclaimer uses a redirect to send a user to the disclaimer document. So as to
+determine the correct path irrespective of where the app is hosted, the redirect
+uses the hosts apps root path to build the redirect url. For this to work, root
+needs to be defined in the host apps routes.
+
+Alternatively, you can over-ride the host root url used in the redirect by 
+setting host_app_root_path in an initializer:
+
+  Disclaimer.host_app_root_path= '/app1'
+
 == Managing views
 
 The default views are simple, and you will probably want to modify them. 

@@ -14,7 +14,7 @@ module ActionController
       unless disclaimer_has_been_accepted
         store_disclaimer_return_location
         document = Disclaimer::Document.find_by_name(@disclaimer_document_name)
-        redirect_to disclaimer.document_path(document)
+        redirect_to host_app_root_path + disclaimer.document_path(document)
       end
     end
 
@@ -34,6 +34,10 @@ module ActionController
         Rails.logger.error "No disclaimer displayed as unable to find Disclaimer::Document with name '#{document_name || 'nil'}'"
         return false
       end
+    end
+    
+    def host_app_root_path
+      (Disclaimer.host_app_root_path || main_app.root_path).gsub(/\/$/, "")
     end
 
   end

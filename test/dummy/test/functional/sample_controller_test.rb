@@ -9,7 +9,8 @@ class SampleControllerTest < ActionController::TestCase
   def test_index_default_redirect
     get :index
     assert_redirected_to("/disclaimer/documents/#{@document.name}")
-    assert_equal({@document.name.to_sym => "http://#{request.host}/sample"}, session[:disclaimer])
+    path_to_sample_index = "http://#{request.host}/"
+    assert_equal({@document.name.to_sym => path_to_sample_index}, session[:disclaimer])
   end
 
   def test_index_with_disclaimer_accepted
