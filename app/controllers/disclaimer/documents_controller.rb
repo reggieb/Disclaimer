@@ -41,7 +41,7 @@ module Disclaimer
     def accept
       return_path = disclaimer_return_path
       store_disclaimer_acceptance
-      redirect_to return_path || host_app_root
+      redirect_to return_path || host_app_root_path
     end
   
     private
