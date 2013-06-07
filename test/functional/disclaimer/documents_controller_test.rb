@@ -122,7 +122,7 @@ module Disclaimer
     def test_accept
       post :accept, :id => @document.name
       assert_response :redirect
-      root_url = "http://#{request.host_with_port}/"
+      root_url = "http://#{request.host_with_port}"
       assert_equal root_url, response.location
       assert_equal({@document.name.to_sym => ACCEPTED}, session[:disclaimer])
     end

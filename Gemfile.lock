@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    disclaimer (0.0.5)
+    disclaimer (0.1.0)
       acts_as_list
       rails (~> 3.2.8)
 
@@ -72,7 +72,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (0.9.2.2)
+    rake (10.0.4)
     rdoc (3.12)
       json (~> 1.4)
     sprockets (2.1.3)

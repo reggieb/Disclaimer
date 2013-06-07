@@ -1,8 +1,12 @@
 module Disclaimer
-  VERSION = "0.0.7"
+  VERSION = "0.1.0"
 end
 
 # History
+#
+# 0.1.0 - Moves app to beta
+# -------------------------
+# Makes app ready for beta release
 #
 # 0.0.7 - Fixes redirect when app hosted in sub uri
 # -------------------------------------------------
