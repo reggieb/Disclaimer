@@ -1,8 +1,14 @@
 module Disclaimer
-  VERSION = "0.0.6"
+  VERSION = "0.0.7"
 end
 
 # History
+#
+# 0.0.7 - Fixes redirect when app hosted in sub uri
+# -------------------------------------------------
+# Version 0.0.6 fixed the redirect to the disclaimer page, but the return from
+# the disclaimer to the app was still broken if there was no return path in
+# session (for example, if someone went straight to the disclaimer path).
 # 
 # 0.0.6 - Improves redirect mechanism
 # -----------------------------------
