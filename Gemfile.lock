@@ -38,6 +38,7 @@ GEM
     acts_as_list (0.1.8)
     arel (3.0.2)
     builder (3.0.4)
+    dibber (0.3.0)
     erubis (2.7.0)
     hike (1.2.1)
     i18n (0.6.1)
@@ -91,5 +92,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dibber
   disclaimer!
   sqlite3

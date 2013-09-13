@@ -1,8 +1,13 @@
 module Disclaimer
-  VERSION = "0.1.0"
+  VERSION = "0.1.1"
 end
 
 # History
+#
+# 0.1.1 - Improves way segments are ordered within documents
+# ----------------------------------------------------------
+# Segment position should now respect segment_holder position.
+# Also added seeds to test/dummy
 #
 # 0.1.0 - Moves app to beta
 # -------------------------
